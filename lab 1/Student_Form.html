@@ -8,7 +8,7 @@
 <body>
     <p><strong>STUDENT INFORMATION</strong></p>
 
-    <form>
+    <form action="login.html" method="post">
         <table border="1">
             <tr>
                 <td>First Name</td>
@@ -56,6 +56,7 @@
                 <td>Department</td>
                 <td>
                     <select name="department">
+                        <option value="">Select :</option>
                         <option value="CSE">Computer Science</option>
                         <option value="EEE">Electrical Engineering</option>
                         <option value="BBA">Business Administration</option>
@@ -70,8 +71,12 @@
                 <td>Image</td>
                 <td><input type="file" name="image"></td>
             </tr>
-            <td><button>SUBMIT</button></td>
-            <td><button>Reset</button></td>
+            <br>
+            <br>
+
+            <button type="button">Input</button>
+            <td><button type="submit">SUBMIT</button></td>
+            <td><button type="reset">Reset</button></td>
 
         </table>
     </form>
