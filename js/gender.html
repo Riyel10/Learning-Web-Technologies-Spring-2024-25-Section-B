@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Gender Selection</title>
+</head>
+
+<body>
+    <h2> Gender Page </h2>
+    <form id="genderForm">
+
+        <label><input type="radio" name="gender" value="male"> Male</label><br>
+        <label><input type="radio" name="gender" value="female"> Female</label><br>
+        <label><input type="radio" name="gender" value="other"> Other</label><br>
+        <br>
+        <hr>
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <script>
+        document.getElementById("genderForm").addEventListener("submit", function(event) {
+            let genderSelected = document.querySelector('input[name="gender"]:checked');
+            if (!genderSelected) {
+                alert("Please select a gender option.");
+                event.preventDefault();
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

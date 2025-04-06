@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Email Validation</title>
+</head>
+
+<body>
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" placeholder="Enter your email">
+    <button type="button" title="Example: username@gmail.com">i</button>
+    <hr>
+
+    <button onclick="validateEmail()">Submit</button>
+    <p id="error-msg"></p>
+
+    <script>
+        function validateEmail() {
+            const emailInput = document.getElementById("email").value.trim();
+            const errMsg = document.getElementById("error-msg");
+
+            if (emailInput === "") {
+                errMsg.innerHTML = "Email cannot be empty.";
+                return;
+            }
+
+            let atFound = false;
+            let dotFound = false;
+            let atIndex = -1;
+            let dotIndex = -1;
+
+            for (let i = 0; i < emailInput.length; ++i) {
+                if (emailInput[i] === '@' && atIndex === -1) {
+                    atIndex = i;
+                    atFound = true;
+                }
+                if (emailInput[i] === '.' && atFound) {
+                    dotIndex = i;
+                    dotFound = true;
+                    break;
+                }
+            }
+
+            if (!atFound || !dotFound || dotIndex < atIndex) {
+                errMsg.innerHTML = "Please enter a valid email address.";
+                return;
+            } else {
+                errMsg.innerHTML = "Valid Email";
+            }
+
+            alert("Email submitted")
+        }
+    </script>
+
+</body>
+</html

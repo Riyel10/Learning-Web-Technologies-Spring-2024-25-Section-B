@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Name Validation Form</title>
+</head>
+
+<body>
+    <form id="nameForm" onsubmit="validateName(event)">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <hr>
+            <button type="submit"> Submit</button>
+            
+            <p id="error" style="color: red;"></p>
+    </form>
+
+    <script>
+        function validateName(event) {
+            event.preventDefault(); 
+
+            const nameInput = document.getElementById('name').value.trim();
+            const errorElement = document.getElementById('error');
+            
+            if (nameInput.length === 0) {
+                errorElement.innerHTML = 'Name cannot be empty';
+                return;
+            }
+        
+            let words = nameInput.split(' ').filter(word => word.length > 0);
+            if (words.length < 2) {
+                errorElement.innerHTML = 'Name must contain at least two words';
+                return;
+            }
+            
+            if (!(nameInput[0] >= 'a' && nameInput[0] <= 'z') && !(nameInput[0] >= 'A' && nameInput[0] <= 'Z')) {
+                errorElement.innerHTML = 'Name must start with a letter';
+                return;
+            }
+
+            for(let i=0;i<nameInput.length;++i) {
+                let char = nameInput[i];
+                if (!((char>='a' && char<='z') || (char>='A' && char<='Z') || char === '.' || char === '-' || char === ' ')) {
+                    errorElement.innerHTML = 'Name can only contain letters dot or dash!';
+                    return;
+                }
+            }
+
+            errorElement.innerHTML = ''; 
+            alert('Form submitted successfully!');
+        }
+    </script>
+</body>
+
+</html>

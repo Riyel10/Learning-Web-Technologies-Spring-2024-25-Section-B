@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Degree Selection page</title>
+</head>
+
+<body>
+    <h2> Degree selection </h2>
+    <form id="degreeForm">
+        <label><input type="checkbox" name="degree" value="SSC"> SSC</label>
+        <label><input type="checkbox" name="degree" value="HSC"> HSC </label>
+        <label><input type="checkbox" name="degree" value="BSc">BSc</label>
+        <br>
+        <br>
+        <hr>
+        <button type="button" onclick="submitForm()"> Submit</button>
+    </form>
+    
+    <p id="output" style="color: red;"></p>
+
+    <script>
+        function submitForm() {
+            let selectedDeg = [];
+            document.querySelectorAll('input[name="degree"]:checked').forEach((checkbox) => {
+                selectedDeg.push(checkbox.value);
+            });
+            
+            if (selectedDeg.length === 0) {
+                document.getElementById("output").innerHTML = "Please select at least one degree.";
+                return;
+            } else {
+                alert("Submmited")
+            }
+            
+            document.getElementById("output").innerHTML = "";
+        }
+    </script>
+</body>
+</html>
